@@ -36,6 +36,9 @@ class MgtModelSync extends BaseDatabaseModel
                     else {
                         $bad[] = $vehicle->id;
                     }
+                    if ($vehicle->srv_id < 20 && !empty($res[$vehicle->id]['vehicle'])) {
+                        $res[$vehicle->id]['num_gos'] = str_replace(array('о','м','е','р',':',' '), array('','','','','',''), trim(mb_substr($tmp, $num-13, 13, 'UTF-8')));
+                    }
                     break;
                 }
             }
@@ -46,6 +49,9 @@ class MgtModelSync extends BaseDatabaseModel
                 foreach ($d->find("a[href^='?mr_id']") as $fnd)
                 {
                     $tmp = trim(pq($fnd)->text());
+                    $href = str_replace('?', '', trim(pq($fnd)->attr('href')));
+                    $q = parse_url($href);
+                    //exit(var_dump($q));
                     if ($vehicle->srv_id > 19) //Для троллейбусов и трамваев
                     {
                         $t = explode('.', $tmp);
@@ -56,6 +62,7 @@ class MgtModelSync extends BaseDatabaseModel
                 }
             }
         }
+        //exit(var_dump($res));
         $this->updateSyncDate($vehicles ?? array(), $ids ?? array(), $bad ?? array());
         $this->saveData($res);
         return $res;
@@ -71,7 +78,7 @@ class MgtModelSync extends BaseDatabaseModel
             $query = $db->getQuery(true);
             $query
                 ->update("`#__mgt_vehicles`")
-                ->set("`num_park` = {$db->q($vehicle['vehicle'])}")
+                ->set("`num_park` = {$db->q($vehicle['vehicle'])}, `num_gos` = {$db->q($vehicle['num_gos'])}")
                 ->where("`id` = {$itemID}");
             $db->setQuery($query)->execute();
         }
