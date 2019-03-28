@@ -14,6 +14,9 @@ foreach ($this->items as $item) :
             <?php echo $item['num_park']; ?>
         </td>
         <td>
+            <?php echo $item['num_gos']; ?>
+        </td>
+        <td>
             <?php echo $item['route']; ?>
         </td>
         <td>

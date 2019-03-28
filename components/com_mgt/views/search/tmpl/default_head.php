@@ -14,6 +14,9 @@ $listDirn = $this->escape($this->state->get('list.direction'));
         <?php echo JHtml::_('grid.sort', 'COM_MGT_HEAD_NUM_PARK', 'num_park', $listDirn, $listOrder); ?>
     </th>
     <th>
+        <?php echo JHtml::_('grid.sort', 'COM_MGT_HEAD_NUM_GOS', 'num_gos', $listDirn, $listOrder); ?>
+    </th>
+    <th>
         <?php echo JHtml::_('grid.sort', 'COM_MGT_HEAD_ROUTE', 'route', $listDirn, $listOrder); ?>
     </th>
     <th>

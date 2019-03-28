@@ -13,8 +13,11 @@ class MgtModelSearch extends ListModel
                 'dat',
                 'type',
                 'route',
+                'num_park',
+                'num_gos',
                 'search',
                 'tm',
+                'last_sync',
             );
         }
         parent::__construct($config);
@@ -72,6 +75,7 @@ class MgtModelSearch extends ListModel
             $arr['dat'] = $dat->format("d.m.Y");
             $arr['type'] = MgtHelper::getVehicleType($item->type);
             $arr['num_park'] = (string) $item->num_park;
+            $arr['num_gos'] = $item->num_gos;
             $arr['route'] = $item->route;
             $sync = JDate::getInstance($item->last_sync);
             $arr['last_sync'] = $sync->format("d.m.Y H:i:s");
