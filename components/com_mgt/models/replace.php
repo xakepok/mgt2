@@ -32,11 +32,11 @@ class MgtModelReplace extends ListModel
         else {
             $dat = $db->q(JDate::getInstance()->format("Y-m-d"));
         }
-
         $query
             ->select("*")
             ->from("`#__mgt`")
-            ->where("`vehicle_id` IN (select `vehicle_id` from `#__mgt` where `dat` = {$dat} group by `vehicle_id` having count(`route`) > 1)");
+            ->where("`vehicle_id` IN (select `vehicle_id` from `#__mgt` where `dat` like {$dat} group by `vehicle_id` having count(`route`) > 1)")
+            ->where("`dat` like {$dat}");
 
         $num_park = $this->getState('filter.search');
         if (!empty($num_park)) {
