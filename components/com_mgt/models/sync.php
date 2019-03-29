@@ -41,6 +41,7 @@ class MgtModelSync extends BaseDatabaseModel
                     }
                     break;
                 }
+                //exit(var_dump($bad));
             }
             if (isset($res[$vehicle->id]['vehicle']))
             {
@@ -50,8 +51,8 @@ class MgtModelSync extends BaseDatabaseModel
                 {
                     $tmp = trim(pq($fnd)->text());
                     $href = str_replace('?', '', trim(pq($fnd)->attr('href')));
-                    $q = parse_url($href);
-                    //exit(var_dump($q));
+                    $q = parse_str($href, $arr); //$arr - массив с ID маршрута и трассы
+                    //exit(var_dump($arr));
                     if ($vehicle->srv_id > 19) //Для троллейбусов и трамваев
                     {
                         $t = explode('.', $tmp);
@@ -62,7 +63,7 @@ class MgtModelSync extends BaseDatabaseModel
                 }
             }
         }
-        //exit(var_dump($res));
+        //exit(var_dump($bad));
         $this->updateSyncDate($vehicles ?? array(), $ids ?? array(), $bad ?? array());
         $this->saveData($res);
         return $res;
@@ -125,7 +126,8 @@ class MgtModelSync extends BaseDatabaseModel
         $query
             ->select("*")
             ->from("`#__mgt_vehicles`")
-            ->order("`last_sync`");
+            ->order("`last_sync`")
+            ->where('`state` = 1');
         return $db->setQuery($query, 0, 50)->loadObjectList();
     }
 }

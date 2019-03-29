@@ -36,7 +36,7 @@ class MgtViewVehicles extends HtmlView
 	{
 		JToolBarHelper::title(JText::sprintf('COM_MGT_MENU_VEHICLES'), '');
 
-        if (MgtHelper::canDo('core.add'))
+        if (MgtHelper::canDo('core.create'))
         {
             JToolbarHelper::addNew('vehicle.add');
         }
