@@ -50,8 +50,8 @@ class MgtModelSync extends BaseDatabaseModel
                 {
                     $tmp = trim(pq($fnd)->text());
                     $href = str_replace('?', '', trim(pq($fnd)->attr('href')));
-                    $q = parse_url($href);
-                    //exit(var_dump($q));
+                    $q = parse_str($href, $arr); //$arr - массив с ID маршрута и трассы
+                    //exit(var_dump($arr));
                     if ($vehicle->srv_id > 19) //Для троллейбусов и трамваев
                     {
                         $t = explode('.', $tmp);
