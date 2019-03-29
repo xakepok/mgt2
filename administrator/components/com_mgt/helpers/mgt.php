@@ -14,7 +14,14 @@ class MgtHelper
 		JHtmlSidebar::addEntry(JText::sprintf('COM_MGT_MENU_VEHICLES'), 'index.php?option=com_mgt&view=vehicles', $vName == 'vehicles');
 	}
 
-    public static function getVehicleType(int $type = 0): string
+    public static function getVehicleType(int $srv_id): int
+    {
+        if ($srv_id < 100) return 0;
+        if ($srv_id >= 100 && $srv_id < 200) return 1;
+        if ($srv_id > 200) return 2;
+	}
+
+    public static function getVehicleTypeText(int $type = 0): string
     {
         return JText::sprintf("COM_MGT_VEHICLE_TYPE_{$type}");
 	}

@@ -73,7 +73,7 @@ class MgtModelSearch extends ListModel
             $arr = array();
             $dat = JDate::getInstance($item->dat);
             $arr['dat'] = $dat->format("d.m.Y");
-            $arr['type'] = MgtHelper::getVehicleType($item->type);
+            $arr['type'] = MgtHelper::getVehicleTypeText($item->type);
             $arr['num_park'] = (string) $item->num_park;
             $arr['num_gos'] = $item->num_gos;
             $arr['route'] = $item->route;

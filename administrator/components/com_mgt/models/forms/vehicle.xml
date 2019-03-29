@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form addrulepath="/administrator/components/com_mgt/models/rules">
+    <fieldset name="names">
+        <field
+                name="id"
+                type="hidden"
+        />
+        <field
+                name="srv_id"
+                type="text"
+                label="COM_MGT_FORM_VEHICLE_SRV_ID"
+                description="COM_MGT_FORM_VEHICLE_SRV_ID_DESC"
+                hint="1"
+                required="true"
+                autocomplete="off"
+        />
+        <field
+                name="unique_id"
+                type="text"
+                label="COM_MGT_FORM_VEHICLE_UNIQUE_ID"
+                description="COM_MGT_FORM_VEHICLE_UNIQUE_ID_DESC"
+                hint="1001001"
+                required="true"
+                autocomplete="off"
+        />
+        <field
+                name="num_park"
+                type="text"
+                label="COM_MGT_FORM_VEHICLE_PARK_NUM"
+                description="COM_MGT_FORM_VEHICLE_PARK_NUM_DESC"
+                hint="010101"
+                required="true"
+                autocomplete="off"
+        />
+        <field
+                name="num_gos"
+                type="text"
+                label="COM_MGT_FORM_VEHICLE_GOS_NUM"
+                description="COM_MGT_FORM_VEHICLE_GOS_NUM_DESC"
+                hint="AA000A777"
+                required="true"
+                autocomplete="off"
+        />
+    </fieldset>
+    <fieldset name="sync">
+        <field
+                name="last_sync"
+                type="text"
+                label="COM_MGT_FORM_VEHICLE_LAST_SYNC"
+                description="COM_MGT_FORM_VEHICLE_LAST_SYNC_DESC"
+                disabled="true"
+        />
+    </fieldset>
+</form>
