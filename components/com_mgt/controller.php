@@ -1,21 +1,20 @@
 <?php
-/**
- * @package    mgt
- *
- * @author     sharikov <your@email.com>
- * @copyright  A copyright
- * @license    GNU General Public License version 2 or later; see LICENSE.txt
- * @link       http://your.url.com
- */
-
 use Joomla\CMS\MVC\Controller\BaseController;
 
 defined('_JEXEC') or die;
 
-/**
- * Mgt Controller.
- *
- * @package  mgt
- * @since    1.0
- */
-class MgtController extends BaseController { }
+class MgtController extends BaseController {
+    public function display($cachable = false, $urlparams = array())
+    {
+        $view = $this->input->getString('view');
+        $app = JFactory::getApplication();
+        if ($view == 'mgt') {
+            if ($app->client->mobile) {
+                $this->setRedirect('/mobile.html');
+                $this->redirect();
+                jexit();
+            }
+        }
+        return parent::display($cachable, $urlparams);
+    }
+}
