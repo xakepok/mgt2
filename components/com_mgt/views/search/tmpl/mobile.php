@@ -2,8 +2,11 @@
 defined('_JEXEC') or die;
 
 ?>
-<table style="border-collapse: collapse; max-width: 350px;">
+<table style="border-collapse: collapse; width: 100%;">
     <tr>
+        <th style="border: 1px solid black; padding: 3px; 1px; font-size: 0.9em;">
+            <?php echo "#";?>
+        </th>
         <th style="border: 1px solid black; padding: 3px; 1px; font-size: 0.9em;">
             <?php echo JText::sprintf('COM_MGT_DATE');?>
         </th>
@@ -24,6 +27,9 @@ defined('_JEXEC') or die;
     foreach ($this->items as $item) :
         ?>
         <tr class="row0">
+            <td style="border: 1px solid black; padding: 3px; 1px; font-size: 0.9em;">
+                <?php echo ++$ii; ?>
+            </td>
             <td style="border: 1px solid black; padding: 3px; 1px; font-size: 0.9em;">
                 <?php echo $item['dat']; ?>
             </td>
